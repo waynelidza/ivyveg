@@ -1,0 +1,91 @@
+<!--
+  Generated template for the SuggestionPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Suggestion Panel</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding id="body">
+
+  <br>
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <!--<ion-segment-button value="comments">-->
+        <!--<p> My Comments</p>-->
+      <!--</ion-segment-button>-->
+      <ion-segment-button value="addcomment">
+        <p> Add Comments</p>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'addcomment'">
+      <form #loginForm="ngForm" (ngSubmit)="sendComment()" >
+        <ion-item>
+          <ion-label>Message</ion-label>
+          <ion-input id="message" type="text"[(ngModel)]="User.Message" name="username"></ion-input>
+        </ion-item>
+
+        <div padding>
+          <button ion-button color="danger" width="50px">Send</button>
+        </div>
+      </form>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'comments'">
+      <ion-card  *ngFor="let cm of comments" style="background-color:#8f8f8f">
+
+        <ion-item >
+          <ion-avatar item-start>
+            <img src="../assets/imgs/wall.jpg">
+          </ion-avatar >
+          <h2 style="font-weight:bold">{{cm.DatetimeSent}}</h2>
+          <!--<p>November 5, 1955</p>-->
+        </ion-item>
+
+        <!--<img src="img/advance-card-bttf.png">-->
+
+        <ion-card-content style="background-color: transparent">
+          <div style="text-align: center;">
+          <p  id ="messages"style="font-weight:lighter">{{cm.Message}}</p>
+          </div>
+        </ion-card-content>
+
+        <ion-row>
+          <!--<ion-col>-->
+          <!--<button ion-button icon-left clear small>-->
+          <!--<ion-icon name="cart"></ion-icon>-->
+          <!--<div>Buy</div>-->
+          <!--</button>-->
+          <!--</ion-col>-->
+          <ion-col>
+            <!--<form #loginForm="ngForm" (ngSubmit)="shopNow(product._id,product.name,product.description ,product.price)" >-->
+              <!--<h1 style="font-size: large">R {{product.price}}</h1>-->
+            <!--</form>-->
+          </ion-col>
+          <ion-col center text-center>
+            <ion-note>
+
+              <button *ngIf="cm.Status==1"ion-button icon-left clear small style="margin-left: 55%">
+                <ion-icon name="arrow-dropup-circle" ></ion-icon>
+                <div style="font-weight:bold" >Read</div>
+              </button>
+            </ion-note>
+          </ion-col>
+        </ion-row>
+
+      </ion-card>
+
+
+    </ion-list>
+  </div>
+</ion-content>

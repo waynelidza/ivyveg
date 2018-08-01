@@ -1,0 +1,77 @@
+<!--
+  Generated template for the OrdersPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>My Orders       </ion-title>
+    <font color="red">
+      <ion-icon name="cart"style="margin-left: 95%" >{{myrequest?.length}} </ion-icon>
+    </font>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding id="body">
+  <ion-card  *ngFor="let product of myrequest">
+
+    <ion-item style="background-color: #8f8f8f">
+      <ion-avatar item-start>
+        <div id="logo"></div>
+      </ion-avatar>
+      <h2 style="font-size: large">{{product.details}}</h2>
+      <!--<p>November 5, 1955</p>-->
+    </ion-item>
+
+    <!--<img src="img/advance-card-bttf.png">-->
+
+    <ion-card-content>
+      <p style="font-size: large">{{product.description}}</p>
+      <p>Date     :     {{product.DatetimeOrder}}</p>
+    </ion-card-content>
+    <p style="font-size: large">R {{product.Totalprice}}</p>
+    <ion-row>
+      <!--<ion-col>-->
+      <!--<button ion-button icon-left clear small>-->
+      <!--<ion-icon name="cart"></ion-icon>-->
+      <!--<div>Buy</div>-->
+      <!--</button>-->
+      <!--</ion-col>-->
+
+      <ion-col>
+
+      </ion-col>
+      <ion-col center text-center>
+        <ion-note>
+
+
+            <button ion-button icon-left clear small>
+              <div *ngIf="product.status==1">
+                <ion-icon name="checkbox"style="color: #21b94e"></ion-icon>
+                <div>Paid</div>
+              </div>
+              <div *ngIf="product.status==0">
+               <br>
+                <div style="color: #f30d0d">
+
+                 <p (click)="Report(product._id)" style="color: #f30d0d"> Press here to Pay
+
+
+                   <ion-icon name="clipboard"></ion-icon>
+                 </p>
+
+                </div>
+
+                      </div>
+            </button>
+
+        </ion-note>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+</ion-content>
